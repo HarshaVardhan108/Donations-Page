@@ -1,0 +1,106 @@
+## Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd donations-page
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Create PostgreSQL database
+```bash
+psql -U postgres -f db.sql
+```
+
+4. Configure environment variables
+Create a `.env` file in the root directory:
+```env
+PORT=3000
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_NAME=donations_db
+DB_HOST=localhost
+DB_PORT=5432
+JWT_SECRET=your_secret_key
+```
+
+## Database Schema
+
+The system uses the following database structure:
+```sql
+CREATE TABLE donations (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    company_name VARCHAR(100),
+    country VARCHAR(100) NOT NULL,
+    street_address TEXT NOT NULL,
+    apartment TEXT,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    postcode VARCHAR(20) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    pan_number VARCHAR(20),
+    has_indian_passport BOOLEAN NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    message TEXT,
+    created_at TIMESTAMP NOT NULL
+);
+```
+
+## Running the Application
+
+1. Start the server:
+```bash
+npm start
+```
+
+2. Development mode with auto-reload:
+```bash
+npm run dev
+```
+
+3. Access the application:
+- Donation Page: http://localhost:3000
+- Admin Panel: http://localhost:3000/admin.html
+- Login Page: http://localhost:3000/login.html
+
+## Admin Access
+
+Default admin credentials:
+- Username: admin
+- Password: admin123
+
+*Note: Change these credentials in production*
+
+## API Endpoints
+
+- POST `/api/donate` - Submit donation
+- GET `/api/donations` - List all donations (requires authentication)
+- GET `/api/donation-receipt/:id` - Generate donation receipt
+- POST `/api/login` - Admin login
+
+## Security Notes
+
+For production deployment:
+1. Change default admin credentials
+2. Use strong JWT secret
+3. Enable HTTPS
+4. Set secure CORS policies
+5. Use environment variables
+6. Hash passwords
+7. Implement rate limiting
+
+## License
+
+MIT License
+
+## Support
+
+For support, please contact [your-email]
