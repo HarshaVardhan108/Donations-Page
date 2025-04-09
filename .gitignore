@@ -1,3 +1,30 @@
+# Dependencies
 node_modules/
-installation.txt/
-db.sql/
+package-lock.json
+installation.txt
+# Environment
+.env
+.env.*
+
+# Database
+db.sql
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
